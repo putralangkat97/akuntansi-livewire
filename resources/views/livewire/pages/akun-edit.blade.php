@@ -9,8 +9,8 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">
-            <button class="btn btn-info">Update</button>
+        <div class="col-lg-2 col-md-2 col-sm-6 col-6">
+            <button class="btn btn-sm btn-block btn-info">Update</button>
         </div>
     </div>
 </form>

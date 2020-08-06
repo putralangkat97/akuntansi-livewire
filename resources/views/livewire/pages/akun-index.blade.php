@@ -1,13 +1,16 @@
 <div>
+    {{-- section --}}
     @section('title', 'Akun')
     @section('page-title', 'Akun')
     @section('bread', 'Akun')
+
+    {{-- content --}}
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
 
-                <div class="card-header border-transparent mb-0">
-                    <h3 class="card-title">
+                <div class="card-header border-transparent mb-0 pb-1">
+                    <h2 class="card-title">
                         @if ($createMode == 0)
                             List Akun
                         @elseif ($createMode == 1)
@@ -15,20 +18,27 @@
                         @elseif ($createMode == 2)
                             Edit Akun
                         @endif
-                    </h3>
+                    </h2>
 
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                             <i class="fas fa-minus"></i>
                         </button>
-                        <button type="button" class="btn btn-tool" data-card-widget="remove">
-                            <i class="fas fa-times"></i>
-                        </button>
                     </div>
                 </div>
-                <div class="card-body">
+                
+                {{-- flash messages and form --}}
+                <div class="card-body m-0 py-0">
                 @if ($createMode == 0)
-                    <button class="btn btn-success" wire:click="tambah"><i class="fas fa-plus"></i> Tambah Akun</button>
+                    @if (session()->has('berhasil'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>Sukses! </strong>{{ session('berhasil') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
+                    <button class="btn btn-sm btn-success" wire:click="tambah"><i class="fas fa-plus"></i> Tambah Akun</button>
                 @elseif ($createMode == 1)
                     @if (session()->has('berhasil'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -38,36 +48,56 @@
                             </button>
                         </div>
                     @endif
-                    @livewire('pages.akun-create') <br>
-                    <button class="btn btn-danger" wire:click="batal">Batal</button>
+                    @livewire('pages.akun-create')
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-6 col-6">
+                            <button class="btn btn-sm btn-block btn-danger mt-1" wire:click="batal">Tutup</button>
+                        </div>
+                    </div>
                 @elseif ($createMode == 2)
-                    @livewire('pages.akun-edit') <br>
-                    <button class="btn btn-danger" wire:click="batal">Batal</button>
+                    @if (session()->has('berhasil'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>Sukses! </strong>{{ session('berhasil') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
+                    @livewire('pages.akun-edit')
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-6 col-6">
+                            <button class="btn btn-sm btn-block btn-danger mt-1" wire:click="batal">Tutup</button>
+                        </div>
+                    </div>
                 @endif
                 </div>
-                <div class="card-body">
+
+                {{-- data list --}}
+                <div class="card-body pt-2">
+                    <input type="text" class="form-control mb-2" wire:model="search" placeholder="cari akun..">
                     <table class="table table-bordered">
                         <thead class="text-center">
                             <tr>
-                                <th>#</th>
+                                <th>No.</th>
                                 <th>Nama Akun</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody class="text-center">
-                            @php $no = 0; @endphp
-                            @foreach ($akuns as $akun)
-                            @php $no++ @endphp
+                            @foreach ($akuns as $key => $akun)
                                 <tr>
-                                    <td>{{ $no }}</td>
+                                    <td>{{ ($akuns->currentpage() - 1) * $akuns->perpage() + $key + 1 }}</td>
                                     <td>{{ $akun->nama_akun }}</td>
                                     <td>
-                                        <button class="btn btn-info" wire:click="getAkun({{ $akun->id }})">Edit</button>&nbsp;<button class="btn btn-danger" wire:click="hapusAkun({{ $akun->id }})">Hapus</button>
+                                        <button class="btn btn-sm btn-info" wire:click="getAkun({{ $akun->id }})">Edit</button>&nbsp;<button class="btn btn-sm btn-danger" wire:click="hapusAkun({{ $akun->id }})">Hapus</button>
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
-                    </table>
+                    </table><br>
+                    
+                    {{-- pagination --}}
+                    {{ $akuns->links() }}
                 </div>
 
             </div>

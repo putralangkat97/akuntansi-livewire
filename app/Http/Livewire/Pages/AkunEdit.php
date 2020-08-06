@@ -28,7 +28,8 @@ class AkunEdit extends Component
             $akun = Akun::find($this->akunId);
             $akun->update(['nama_akun' => $this->nama_akun]);
 
-            $this->emit('akunUpdate', $akun);
+            $this->nama_akun = '';
+            $this->emit('update', $akun);
         }
     }
 

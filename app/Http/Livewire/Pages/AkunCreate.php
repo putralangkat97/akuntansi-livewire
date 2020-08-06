@@ -25,7 +25,7 @@ class AkunCreate extends Component
 
         // Setelah berhasil akan mengosongkan form dan mengirim parameter melalui emit
         $this->nama_akun = '';
-        $this->emit('tambahAkun', $akun);
+        $this->emit('tambah', $akun);
     }
 
     public function render()

@@ -4,21 +4,32 @@ namespace App\Http\Livewire\Pages;
 
 use App\Models\Akun;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class AkunIndex extends Component
 {
+    // pagination
+    use WithPagination;
+
     // variabel edit
+    public $search;
     public $nama_akun;
     public $createMode = 0;
 
     // Emit untuk live data
-    protected $listeners = ['tambahAkun', 'akunUpdate'];
+    protected $listeners = [
+        'tambah' => 'akunTambah',
+        'update' => 'akunUpdate',
+    ];
+
+    // Untuk update quert search, nama array disesuaikan dengan nama model
+    protected $updatesQueryString = ['search'];
 
     /* method emit yang digunakan untuk
     * menerima parameter dari method create
     * dan juga flash messages.
     */
-    public function tambahAkun($akun) {
+    public function akunTambah($akun) {
         // menampilkan pesan flash jika berhasil
         session()->flash('berhasil', $akun['nama_akun'].' berhasil ditambahkan');
     }
@@ -35,6 +46,14 @@ class AkunIndex extends Component
         $this->createMode = 2;
     }
 
+    public function hapusAkun($id) {
+        if ($id) {
+            $akun = Akun::where('id', $id)->delete();
+    
+            session()->flash('berhasil', 'Akun berhasil dihapus');
+        }
+    }
+
     public function batal() {
         $this->createMode = 0;
     }
@@ -46,7 +65,9 @@ class AkunIndex extends Component
     public function render()
     {
         return view('livewire.pages.akun-index', [
-            'akuns' => Akun::latest()->get()
+            'akuns' => $this->search != null
+                ? Akun::where('nama_akun', 'like', '%'.$this->search.'%')->paginate(5)
+                : Akun::orderBy('id', 'desc')->paginate(5)
         ]);
     }
 }
