@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Pages;
+namespace App\Http\Livewire\Akun;
 
 use App\Models\Akun;
 use Livewire\Component;
@@ -37,6 +37,7 @@ class AkunIndex extends Component
     public function akunUpdate($akun) {
         // menampilkan pesan flash jika berhasil
         session()->flash('berhasil', $akun['nama_akun'].' berhasil diupdate');
+        $this->createMode = 0;
     }
 
     public function getAkun($id) {
@@ -51,6 +52,7 @@ class AkunIndex extends Component
             $akun = Akun::where('id', $id)->delete();
     
             session()->flash('berhasil', 'Akun berhasil dihapus');
+            $this->createMode = 0;
         }
     }
 
@@ -64,7 +66,7 @@ class AkunIndex extends Component
 
     public function render()
     {
-        return view('livewire.pages.akun-index', [
+        return view('livewire.akun.akun-index', [
             'akuns' => $this->search != null
                 ? Akun::where('nama_akun', 'like', '%'.$this->search.'%')->paginate(5)
                 : Akun::orderBy('id', 'desc')->paginate(5)

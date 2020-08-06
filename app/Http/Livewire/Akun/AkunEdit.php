@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Pages;
+namespace App\Http\Livewire\Akun;
 
 use App\Models\Akun;
 use Livewire\Component;
@@ -35,6 +35,6 @@ class AkunEdit extends Component
 
     public function render()
     {
-        return view('livewire.pages.akun-edit');
+        return view('livewire.akun.akun-edit');
     }
 }

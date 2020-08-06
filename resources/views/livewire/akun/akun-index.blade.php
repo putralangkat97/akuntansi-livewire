@@ -48,7 +48,7 @@
                             </button>
                         </div>
                     @endif
-                    @livewire('pages.akun-create')
+                    @livewire('akun.akun-create')
                     <div class="row">
                         <div class="col-lg-2 col-md-2 col-sm-6 col-6">
                             <button class="btn btn-sm btn-block btn-danger mt-1" wire:click="batal">Tutup</button>
@@ -63,7 +63,7 @@
                             </button>
                         </div>
                     @endif
-                    @livewire('pages.akun-edit')
+                    @livewire('akun.akun-edit')
                     <div class="row">
                         <div class="col-lg-2 col-md-2 col-sm-6 col-6">
                             <button class="btn btn-sm btn-block btn-danger mt-1" wire:click="batal">Tutup</button>

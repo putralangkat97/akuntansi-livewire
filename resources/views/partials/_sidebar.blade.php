@@ -24,7 +24,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                     with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="/admin" class="nav-link">
+                    <a href="{{ route('admin.dashboard') }}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Home
@@ -32,8 +32,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/jurnal-umum" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <a href="{{ route('admin.jurnal-umum') }}" class="nav-link">
+                        <i class="nav-icon fas fa-bookmark-alt"></i>
                         <p>
                             Jurnal Umum
                         </p>
@@ -43,28 +43,22 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-table"></i>
                         <p>
-                            Tables
+                            Daftar Akun
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/pages/tables/simple.html" class="nav-link">
+                            <a href="{{ route('admin.akun') }}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Simple Tables</p>
+                            <p>General Akun</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/pages/tables/data.html" class="nav-link">
+                            <a href="{{ route('admin.sub-akun') }}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>DataTables</p>
+                            <p>Sub Akun</p>
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/pages/tables/jsgrid.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>jsGrid</p>
-                                </a>
                         </li>
                     </ul>
                 </li>
