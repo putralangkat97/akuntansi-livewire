@@ -5,7 +5,6 @@
     @section('bread', 'Jurnal Umum')
     <div class="row">
         <div class="col-lg-12">
-
             <div class="card">
 
                 <div class="card-header border-transparent mb-0">
@@ -131,7 +130,6 @@
                 </div>
 
             </div>
-
         </div>
     </div>
 

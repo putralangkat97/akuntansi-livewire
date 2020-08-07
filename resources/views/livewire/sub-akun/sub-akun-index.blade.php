@@ -21,8 +21,8 @@
                     </div>
                 </div>
 
-                <div class="card-body">
-                    <div class="m-0 py-0">
+                <div class="card-body m-0 py-0">
+                    @if ($createSubMode == 0)
                         @if (session()->has('berhasil'))
                             <div class="alert alert-success">
                                 <strong>Sukses!</strong> {{ session('berhasil') }}
@@ -31,12 +31,30 @@
                                 </button>
                             </div>
                         @endif
+                        <button class="btn btn-sm btn-success" wire:click="tambah"><i class="fas fa-plus"></i> Tambah Sub Akun</button>
+                    @elseif ($createSubMode == 1)
+                        @if (session()->has('berhasil'))
+                            <div class="alert alert-success">
+                                <strong>Sukses!</strong> {{ session('berhasil') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @endif
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" wire:click="batal">
+                            <span aria-hidden="true" class="text-danger">&times;</span>
+                        </button>
                         @livewire('sub-akun.sub-akun-create')
-                    </div>
+                    @elseif ($createSubMode == 2)
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" wire:click="batal">
+                            <span aria-hidden="true" class="text-danger">&times;</span>
+                        </button>
+                        @livewire('sub-akun.sub-akun-update')
+                    @endif
                 </div>
 
                 <div class="card-body pt-2">
-                    <input type="text" class="form-control mb-2" placeholder="cari sub akun..">
+                    <input wire:model="search" type="text" class="form-control mb-2" placeholder="cari sub akun..">
                     <table class="table table-bordered">
                         <thead class="text-center">
                             <tr>
@@ -49,13 +67,18 @@
                         <tbody class="text-center">
                             @foreach ($subakuns as $key => $sa)
                             <tr>
-                                <td>{{ ++$key }}</td>
+                                <td>{{ ($subakuns->currentpage() - 1) * $subakuns->perpage() + $key + 1 }}</td>
                                 <td>{{ $sa->akun->nama_akun }}</td>
                                 <td>{{ $sa->nama_sub_akun }}</td>
-                                <td>x</td>
+                                <td>
+                                    <button class="btn btn-sm btn-info" wire:click="edit({{ $sa->id }})">Edit</button>&nbsp;
+                                    <button class="btn btn-sm btn-danger" wire:click="delete({{ $sa->id }})">Hapus</button>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
+                    </table><br>
+                    {{ $subakuns->links() }}
                 </div>
 
             </div>

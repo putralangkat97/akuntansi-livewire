@@ -11,9 +11,11 @@ class AkunIndex extends Component
     // pagination
     use WithPagination;
 
+    // Untuk update quert search, nama array disesuaikan dengan nama model
+    protected $updatesQueryString = ['search'];
+
     // variabel edit
     public $search;
-    public $nama_akun;
     public $createMode = 0;
 
     // Emit untuk live data
@@ -21,9 +23,6 @@ class AkunIndex extends Component
         'tambah' => 'akunTambah',
         'update' => 'akunUpdate',
     ];
-
-    // Untuk update quert search, nama array disesuaikan dengan nama model
-    protected $updatesQueryString = ['search'];
 
     /* method emit yang digunakan untuk
     * menerima parameter dari method create

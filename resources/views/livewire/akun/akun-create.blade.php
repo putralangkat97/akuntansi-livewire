@@ -4,7 +4,7 @@
             <div class="form-group">
                 <label>Nama Akun:</label>
                 <input wire:model="nama_akun" type="text" class="form-control" placeholder="Nama akun..">
-                @error('nama_akun') <span class="error">{{ $message }}</span> @enderror
+                @error('nama_akun') <span class="text-danger error">{{ $message }}</span> @enderror
             </div>
         </div>
     </div>

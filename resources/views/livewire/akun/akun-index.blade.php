@@ -29,47 +29,43 @@
                 
                 {{-- flash messages and form --}}
                 <div class="card-body m-0 py-0">
-                @if ($createMode == 0)
-                    @if (session()->has('berhasil'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>Sukses! </strong>{{ session('berhasil') }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
+                    @if ($createMode == 0)
+                        @if (session()->has('berhasil'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong>Sukses! </strong>{{ session('berhasil') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @endif
+                        <button class="btn btn-sm btn-success" wire:click="tambah"><i class="fas fa-plus"></i> Tambah Akun</button>
+                    @elseif ($createMode == 1)
+                        @if (session()->has('berhasil'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong>Sukses! </strong>{{ session('berhasil') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @endif
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" wire:click="batal">
+                            <span aria-hidden="true" class="text-danger">&times;</span>
+                        </button>
+                        @livewire('akun.akun-create')
+                    @elseif ($createMode == 2)
+                        @if (session()->has('berhasil'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong>Sukses! </strong>{{ session('berhasil') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @endif
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" wire:click="batal">
+                            <span aria-hidden="true" class="text-danger">&times;</span>
+                        </button>
+                        @livewire('akun.akun-edit')
                     @endif
-                    <button class="btn btn-sm btn-success" wire:click="tambah"><i class="fas fa-plus"></i> Tambah Akun</button>
-                @elseif ($createMode == 1)
-                    @if (session()->has('berhasil'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>Sukses! </strong>{{ session('berhasil') }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    @endif
-                    @livewire('akun.akun-create')
-                    <div class="row">
-                        <div class="col-lg-2 col-md-2 col-sm-6 col-6">
-                            <button class="btn btn-sm btn-block btn-danger mt-1" wire:click="batal">Tutup</button>
-                        </div>
-                    </div>
-                @elseif ($createMode == 2)
-                    @if (session()->has('berhasil'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>Sukses! </strong>{{ session('berhasil') }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    @endif
-                    @livewire('akun.akun-edit')
-                    <div class="row">
-                        <div class="col-lg-2 col-md-2 col-sm-6 col-6">
-                            <button class="btn btn-sm btn-block btn-danger mt-1" wire:click="batal">Tutup</button>
-                        </div>
-                    </div>
-                @endif
                 </div>
 
                 {{-- data list --}}
