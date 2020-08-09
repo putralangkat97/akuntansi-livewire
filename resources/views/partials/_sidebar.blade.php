@@ -33,7 +33,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('admin.jurnal-umum') }}" class="nav-link">
-                        <i class="nav-icon fas fa-bookmark-alt"></i>
+                        <i class="nav-icon fas fa-book"></i>
                         <p>
                             Jurnal Umum
                         </p>

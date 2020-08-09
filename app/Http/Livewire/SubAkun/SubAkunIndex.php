@@ -68,19 +68,24 @@ class SubAkunIndex extends Component
 
     public function render()
     {
+        // global query
         $model = SubAkun::query();
 
+        // pengkondisian search
         $model->when($this->search, function ($query) {
+            // mencari nama_akun
             $searchQuery = function ($query) {
                 $query->where('nama_akun', 'like', '%'. $this->search .'%');
             };
 
+            // mencari nama_sub_akun
             $query->where('nama_sub_akun', 'like', '%'. $this->search .'%')
                 ->orWhereHas('akun', $searchQuery);
 
             // $query->with(['akun' => $searchQuery]);
         });
 
+        // result hasil pencarian
         $results = $model->latest('id')->paginate(5);
         
         return view('livewire.sub-akun.sub-akun-index', [

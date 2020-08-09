@@ -17,10 +17,10 @@ class SubAkunCreate extends Component
             'sub_akun' => 'required',
         ]);
 
-        $form = array(
+        $form = [
             'akun_id' => $this->akun_id,
             'nama_sub_akun' => $this->sub_akun
-        );
+        ];
 
         $subakun = SubAkun::create($form);
 

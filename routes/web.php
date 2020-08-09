@@ -6,7 +6,7 @@ Route::get('/', function () {
 
 Route::layout('layouts.base')->prefix('admin')->name('admin.')->group(function () {
     // dashboard
-    Route::livewire('/', 'akun.dashboard')->name('dashboard');
+    Route::livewire('/', 'pages.dashboard')->name('dashboard');
 
     // akun
     Route::livewire('/akun', 'akun.akun-index')->name('akun');
@@ -15,7 +15,7 @@ Route::layout('layouts.base')->prefix('admin')->name('admin.')->group(function (
     Route::livewire('/sub-akun', 'sub-akun.sub-akun-index')->name('sub-akun');
 
     // jurnal umum
-    Route::livewire('/jurnal-umum', 'pages.jurnal-umum')->name('jurnal-umum');
+    Route::livewire('/jurnal-umum', 'jurnal-umum.jurnal-index')->name('jurnal-umum');
 });
 
 Auth::routes();
