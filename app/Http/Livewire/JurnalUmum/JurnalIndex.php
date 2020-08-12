@@ -90,7 +90,8 @@ class JurnalIndex extends Component
                         'nominal' => $this->jurnal[$pd]['nominal'],
                         'akun_id' => $dan[0],
                         'sub_akun_id' => $sian[0],
-                        'user_id' => 1
+                        'user_id' => 1,
+                        //'no_urut' => $pd + 1//
                     ];
 
                     // dump($form);

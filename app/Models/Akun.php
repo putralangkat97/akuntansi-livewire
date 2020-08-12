@@ -8,7 +8,7 @@ class Akun extends Model
 {
     protected $guarded = [];
 
-    public function subAkuns() {
-        return $this->hasMany('App\Models\SubAkun', 'akun_id');
+    public function generalAkuns() {
+        return $this->hasMany('App\Models\GeneralAkun', 'akun_id');
     }
 }

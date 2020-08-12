@@ -22,5 +22,16 @@
 <!-- PAGE SCRIPTS -->
 <script src="/dist/js/pages/dashboard2.js"></script>
 
+{{-- Toastr --}}
+<script src="/dist/js/toastr.min.js"></script>
+
+<script>
+    document.addEventListener('livewire:load', () => {
+        window.livewire.on('alert', param => {
+            toastr[param['type']](param['message']);
+        });
+    });
+</script>
+
 {{-- Add-Ons --}}
 @yield('js')

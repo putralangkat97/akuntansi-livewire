@@ -15,6 +15,7 @@ class CreateAkunsTable extends Migration
     {
         Schema::create('akuns', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('no_akun');
             $table->string('nama_akun', 50);
             $table->timestamps();
         });

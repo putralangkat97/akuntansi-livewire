@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SubAkun extends Model
+class GeneralAkun extends Model
 {
+    protected $table = 'general_akun';
     protected $guarded = [];
 
     public function akun() {

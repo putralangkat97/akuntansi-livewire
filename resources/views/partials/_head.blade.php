@@ -14,5 +14,8 @@
 {{-- Fonts --}}
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
+{{-- toastr --}}
+<link rel="stylesheet" href="/dist/css/toastr.min.css">
+
 {{-- Css Add-ons --}}
 @yield('css')

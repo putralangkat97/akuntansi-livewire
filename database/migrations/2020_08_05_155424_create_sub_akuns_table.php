@@ -13,9 +13,10 @@ class CreateSubAkunsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sub_akuns', function (Blueprint $table) {
+        Schema::create('general_akun', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nama_sub_akun', 50);
+            $table->string('no_ga', 15);
+            $table->string('nama_general_akun', 50);
             $table->unsignedBigInteger('akun_id');
             $table->timestamps();
 

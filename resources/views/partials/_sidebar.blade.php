@@ -48,16 +48,16 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="{{ route('admin.akun') }}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>General Akun</p>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
-                            <a href="{{ route('admin.sub-akun') }}" class="nav-link">
+                            <a href="{{ route('admin.general-akun') }}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Sub Akun</p>
+                            <p>General Akun</p>
                             </a>
                         </li>
                     </ul>
