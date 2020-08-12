@@ -3,7 +3,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/api/tes', 'test@api');
 
 Route::layout('layouts.base')->prefix('admin')->name('admin.')->group(function () {
     // dashboard
