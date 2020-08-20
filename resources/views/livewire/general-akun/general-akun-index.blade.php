@@ -28,6 +28,11 @@
                                 @livewire('general-akun.general-akun-create')
                             @else
                                 @livewire('general-akun.general-akun-update')
+                                <div class="row">
+                                    <div class="col">
+                                        <button wire:click="kosongkan" class="btn btn-block btn-danger mt-2">Batal</button>
+                                    </div>
+                                </div>
                             @endif
                         </div>
                         <div class="col-lg-9 col-md-12 col-sm-12 col-12">

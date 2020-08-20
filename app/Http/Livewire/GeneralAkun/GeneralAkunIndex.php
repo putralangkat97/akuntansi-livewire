@@ -55,6 +55,10 @@ class GeneralAkunIndex extends Component
         }
     }
 
+    public function kosongkan() {
+        $this->createMode = true;
+    }
+
     public function render()
     {
         // global query
@@ -70,6 +74,7 @@ class GeneralAkunIndex extends Component
 
             // mencari nama_general_akun
             $query->where('nama_general_akun', 'like', '%'. $this->search .'%')
+                ->orWhere('no_ga', 'like', '%'. $this->search .'%')
                 ->orWhereHas('akun', $searchQuery);
 
             // $query->with(['akun' => $searchQuery]);
