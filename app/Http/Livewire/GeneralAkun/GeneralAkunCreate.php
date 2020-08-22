@@ -28,31 +28,41 @@ class GeneralAkunCreate extends Component
         // menjalankan sintaks berdasarkan id akun yang di pilih
         if ($akun == 1) {
             // generate number general akun apabila akun yang di pilih 1
-            $lastNumberGeneralAkun  = GeneralAkun::where('akun_id', 1)->orderBy('id', 'desc')->first()->no_ga ?? 0;
+            $lastNumberGeneralAkun  = GeneralAkun::where('akun_id', 1)
+                                        ->orderBy('id', 'desc')
+                                        ->first()->no_ga ?? 0;
             $lastIncrement          = substr($lastNumberGeneralAkun, -1);
             $this->newNumber        = $this->akun_id.str_pad($lastIncrement + 1, 2, 0, STR_PAD_LEFT);
         }
         else if ($akun == 2) {
             // generate number general akun apabila akun yang di pilih 2
-            $lastNumberGeneralAkun  = GeneralAkun::where('akun_id', 2)->orderBy('id', 'desc')->first()->no_ga ?? 0;
+            $lastNumberGeneralAkun  = GeneralAkun::where('akun_id', 2)
+                                        ->orderBy('id', 'desc')
+                                        ->first()->no_ga ?? 0;
             $lastIncrement          = substr($lastNumberGeneralAkun, -1);
             $this->newNumber        = $this->akun_id.str_pad($lastIncrement + 1, 2, 0, STR_PAD_LEFT);
         }
         else if ($akun == 3) {
             // generate number general akun apabila akun yang di pilih 3
-            $lastNumberGeneralAkun  = GeneralAkun::where('akun_id', 3)->orderBy('id', 'desc')->first()->no_ga ?? 0;
+            $lastNumberGeneralAkun  = GeneralAkun::where('akun_id', 3)
+                                        ->orderBy('id', 'desc')
+                                        ->first()->no_ga ?? 0;
             $lastIncrement          = substr($lastNumberGeneralAkun, -1);
             $this->newNumber        = $this->akun_id.str_pad($lastIncrement + 1, 2, 0, STR_PAD_LEFT);
         }
         else if ($akun == 4) {
             // generate number general akun apabila akun yang di pilih 4
-            $lastNumberGeneralAkun  = GeneralAkun::where('akun_id', 4)->orderBy('id', 'desc')->first()->no_ga ?? 0;
+            $lastNumberGeneralAkun  = GeneralAkun::where('akun_id', 4)
+                                        ->orderBy('id', 'desc')
+                                        ->first()->no_ga ?? 0;
             $lastIncrement          = substr($lastNumberGeneralAkun, -1);
             $this->newNumber        = $this->akun_id.str_pad($lastIncrement + 1, 2, 0, STR_PAD_LEFT);
         }
         else if ($akun == 5) {
             // generate number general akun apabila akun yang di pilih 5
-            $lastNumberGeneralAkun  = GeneralAkun::where('akun_id', 5)->orderBy('id', 'desc')->first()->no_ga ?? 0;
+            $lastNumberGeneralAkun  = GeneralAkun::where('akun_id', 5)
+                                        ->orderBy('id', 'desc')
+                                        ->first()->no_ga ?? 0;
             $lastIncrement          = substr($lastNumberGeneralAkun, -1);
             $this->newNumber        = $this->akun_id.str_pad($lastIncrement + 1, 2, 0, STR_PAD_LEFT);
         }

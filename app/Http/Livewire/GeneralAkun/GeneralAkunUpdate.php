@@ -14,7 +14,7 @@ class GeneralAkunUpdate extends Component
     // listeners dari index
     protected $listeners = ['getGeneralAkun'];
 
-    // method menangkap data dari index
+    // data dari database yang ada di form
     public function getGeneralAkun($generalAkun) {
         $this->akun_id          = $generalAkun['akun_id'];
         $this->general_akun     = $generalAkun['nama_general_akun'];
@@ -31,7 +31,8 @@ class GeneralAkunUpdate extends Component
         ]);
 
         // generate number general akun
-        $lastNumber         = GeneralAkun::orderBy('id', 'desc')->first()->no_ga ?? 0;
+        $lastNumber         = GeneralAkun::orderBy('id', 'desc')
+                                ->first()->no_ga ?? 0;
         $lastIncrement      = substr($lastNumber, -1);
         $this->newNumber    = $this->akun_id.str_pad($lastIncrement + 1, 2, 0, STR_PAD_LEFT);
         // tangkap data kita itu boss

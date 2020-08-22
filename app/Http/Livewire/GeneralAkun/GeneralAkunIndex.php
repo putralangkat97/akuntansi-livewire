@@ -26,16 +26,22 @@ class GeneralAkunIndex extends Component
     ];
 
     public function tambahGeneralAkun($generalAkun) {
-        $this->emit('alert', ['type' => 'success', 'message' => '👍 General Akun '. $generalAkun['nama_general_akun'] .' berhasil ditambahkan']);
+        $this->emit(
+            'alert', ['type' => 'success', 'message' => '👍 General Akun '. $generalAkun['nama_general_akun'] .' berhasil ditambahkan']
+        );
     }
 
     public function updateGeneralAkun($updateGeneralAkun) {
-        $this->emit('alert', ['type' => 'success', 'message' => '👍 General Akun '. $updateGeneralAkun['nama_general_akun'] .' berhasil diupdate']);
+        $this->emit(
+            'alert', ['type' => 'success', 'message' => '👍 General Akun '. $updateGeneralAkun['nama_general_akun'] .' berhasil diupdate']
+        );
         $this->createMode = true;
     }
 
     public function hapusGeneralAkun() {
-        $this->emit('alert', ['type' => 'success', 'message' => '👍 General Akun berhasil dihapus']);
+        $this->emit(
+            'alert', ['type' => 'success', 'message' => '👍 General Akun berhasil dihapus']
+        );
     }
 
     // method edit
@@ -81,7 +87,8 @@ class GeneralAkunIndex extends Component
         });
 
         // result hasil pencarian
-        $results = $model->latest('id')->paginate(5);
+        $results    = $model->latest('id')
+                        ->paginate(5);
         
         return view('livewire.general-akun.general-akun-index', [
             'generalAkuns' => $results
