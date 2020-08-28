@@ -33,32 +33,28 @@ class GeneralAkunCreate extends Component
                                         ->first()->no_ga ?? 0;
             $lastIncrement          = substr($lastNumberGeneralAkun, -1);
             $this->newNumber        = $this->akun_id.str_pad($lastIncrement + 1, 2, 0, STR_PAD_LEFT);
-        }
-        else if ($akun == 2) {
+        } else if ($akun == 2) {
             // generate number general akun apabila akun yang di pilih 2
             $lastNumberGeneralAkun  = GeneralAkun::where('akun_id', 2)
                                         ->orderBy('id', 'desc')
                                         ->first()->no_ga ?? 0;
             $lastIncrement          = substr($lastNumberGeneralAkun, -1);
             $this->newNumber        = $this->akun_id.str_pad($lastIncrement + 1, 2, 0, STR_PAD_LEFT);
-        }
-        else if ($akun == 3) {
+        } else if ($akun == 3) {
             // generate number general akun apabila akun yang di pilih 3
             $lastNumberGeneralAkun  = GeneralAkun::where('akun_id', 3)
                                         ->orderBy('id', 'desc')
                                         ->first()->no_ga ?? 0;
             $lastIncrement          = substr($lastNumberGeneralAkun, -1);
             $this->newNumber        = $this->akun_id.str_pad($lastIncrement + 1, 2, 0, STR_PAD_LEFT);
-        }
-        else if ($akun == 4) {
+        } else if ($akun == 4) {
             // generate number general akun apabila akun yang di pilih 4
             $lastNumberGeneralAkun  = GeneralAkun::where('akun_id', 4)
                                         ->orderBy('id', 'desc')
                                         ->first()->no_ga ?? 0;
             $lastIncrement          = substr($lastNumberGeneralAkun, -1);
             $this->newNumber        = $this->akun_id.str_pad($lastIncrement + 1, 2, 0, STR_PAD_LEFT);
-        }
-        else if ($akun == 5) {
+        } else if ($akun == 5) {
             // generate number general akun apabila akun yang di pilih 5
             $lastNumberGeneralAkun  = GeneralAkun::where('akun_id', 5)
                                         ->orderBy('id', 'desc')
@@ -81,12 +77,15 @@ class GeneralAkunCreate extends Component
         $this->emit('tambah', $generalAkun);
 
         // hapus isi form setelah berhasil masuk ke database
+        $this->kosongkan();
+    }
+
+    public function kosongkan() {
         $this->general_akun = null;
         $this->akun_id      = null;
     }
 
-    public function render()
-    {
+    public function render() {
         return view('livewire.general-akun.general-akun-create', [
             'akuns' => Akun::orderBy('no_akun', 'asc')->get()
         ]);

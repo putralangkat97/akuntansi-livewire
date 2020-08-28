@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\JurnalUmum;
 
 use App\Models\Akun;
-use App\Models\SubAkun;
 use Livewire\Component;
 use App\Models\JurnalUmum;
 use Illuminate\Http\Request;

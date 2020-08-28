@@ -16,12 +16,10 @@ class GeneralAkunIndex extends Component
 
     // public variable
     public $search;
-    public $createMode = true;
 
     // listeners
     protected $listeners = [
         'tambah'    => 'tambahGeneralAkun',
-        'update'    => 'updateGeneralAkun',
         'hapus'     => 'hapusGeneralAkun'
     ];
 
@@ -31,25 +29,10 @@ class GeneralAkunIndex extends Component
         );
     }
 
-    public function updateGeneralAkun($updateGeneralAkun) {
-        $this->emit(
-            'alert', ['type' => 'success', 'message' => '👍 General Akun '. $updateGeneralAkun['nama_general_akun'] .' berhasil diupdate']
-        );
-        $this->createMode = true;
-    }
-
     public function hapusGeneralAkun() {
         $this->emit(
             'alert', ['type' => 'success', 'message' => '👍 General Akun berhasil dihapus']
         );
-    }
-
-    // method edit
-    public function edit($id) {
-        $generalAkun = GeneralAkun::find($id);
-
-        $this->emit('getGeneralAkun', $generalAkun);
-        $this->createMode = false;
     }
 
     // method hapus
@@ -58,15 +41,11 @@ class GeneralAkunIndex extends Component
             $generalAkun = GeneralAkun::find($id);
             $generalAkun->delete();
             $this->emit('hapus');
+            $this->yakin = false;
         }
     }
 
-    public function kosongkan() {
-        $this->createMode = true;
-    }
-
-    public function render()
-    {
+    public function render() {
         // global query
         $model = GeneralAkun::query();
 

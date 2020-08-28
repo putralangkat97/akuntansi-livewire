@@ -24,16 +24,7 @@
                 <div class="card-body mt-0">
                     <div class="row">
                         <div class="col-lg-3 col-md-12 col-sm-12 col-12">
-                            @if ($createMode == true)
-                                @livewire('general-akun.general-akun-create')
-                            @else
-                                @livewire('general-akun.general-akun-update')
-                                <div class="row">
-                                    <div class="col">
-                                        <button wire:click="kosongkan" class="btn btn-block btn-danger mt-2">Batal</button>
-                                    </div>
-                                </div>
-                            @endif
+                            @livewire('general-akun.general-akun-create')
                         </div>
                         <div class="col-lg-9 col-md-12 col-sm-12 col-12">
                             <h4 class="card-title mb-2"><strong>List General Akun</strong></h4>
@@ -44,7 +35,7 @@
                                         <th>No. GA</th>
                                         <th>General Akun</th>
                                         <th>Akun</th>
-                                        <th>Action</th>
+                                        <th width="200px">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
@@ -54,7 +45,7 @@
                                             <td>{{ $general->nama_general_akun }}</td>
                                             <td>{{ $general->akun->no_akun }} - {{ $general->akun->nama_akun }}</td>
                                             <td>
-                                                <button class="btn btn-sm btn-info" wire:click="edit({{ $general->id }})"><i class="fa fa-pencil-alt"></i></button>&nbsp;<button class="btn btn-sm btn-danger" wire:click="hapus({{ $general->id }})"><i class="fa fa-trash"></i></button>
+                                                <button class="btn btn-sm btn-danger text-white" wire:click="hapus({{ $general->id }})">hapus</button>
                                             </td>
                                         </tr>
                                     @empty
