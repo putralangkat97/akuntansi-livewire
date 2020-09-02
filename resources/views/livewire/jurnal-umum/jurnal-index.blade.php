@@ -5,10 +5,8 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-
                 <div class="card-header border-transparent mb-0">
                     <h3 class="card-title">Jurnal Manual</h3>
-
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                             <i class="fas fa-minus"></i>
@@ -23,14 +21,13 @@
                         <em>Satu tanggal, Satu transaksi.</em>
                     </p>
                 </div>
-
                 <div class="card-body">
                     <form  wire:submit.prevent="tambahTable">
                         <div class="row">
                             <div class="col-lg-2 col-md-6 col-sm-12 col-12">
                                 <div class="form-group">
                                     <label>Tanggal:</label>
-                                    <input type="date" wire:model="tanggal" class="form-control" {{$jurnal != '' ? 'readonly' : ''}}>
+                                    <input type="date" wire:model="tanggal" class="form-control">
                                     @error('tanggal') <span class="error text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -64,9 +61,6 @@
                                     <label>Akun:</label>
                                     <select class="form-control" wire:model="akunId">
                                         <option value="">-- Pilih Akun --</option>
-                                        @foreach ($akuns as $akun)
-                                            <option wire:click="ganti({{ $akun->id }})" value="{{ $akun->nama_akun }}">{{ $akun->nama_akun }}</option>
-                                        @endforeach
                                     </select>
                                     @error('akun_parent') <span class="error text-danger">{{ $message }}</span> @enderror
                                 </div>
@@ -74,13 +68,8 @@
                             <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                                 <div class="form-group">
                                     <label>Sub Akun: <small class="text-danger">(harap pilih akun terlebih dahulu)</small></label>
-                                    <select class="form-control" wire:model="subAkunId" {{ $subakuns == null ? 'readonly' : '' }}>
+                                    <select class="form-control" wire:model="subAkunId">
                                         <option value="">-- Pilih --</option>
-                                        @if ($subakuns != null)
-                                            @foreach ($subakuns as $sa)
-                                                <option value="{{ $sa->nama_sub_akun }}">{{ $sa->nama_sub_akun }}</option>
-                                            @endforeach
-                                        @endif
                                     </select>
                                     @error('subAkunId') <span class="error text-danger">{{ $message }}</span> @enderror
                                 </div>
@@ -93,26 +82,20 @@
                         </div>
                     </form>
                 </div>
-
                 <hr>
-
                 <div class="card-body">
-                    @if (session()->has('selisih'))
-                        <div class="alert alert-warning mb-2">
-                            <strong>Oops!</strong> {{ session('selisih') }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    @endif
-                    @if (session()->has('berhasil'))
-                        <div class="alert alert-success mb-2">
-                            <strong>Sukses!</strong> {{ session('berhasil') }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    @endif
+                    <div class="alert alert-warning mb-2">
+                        <strong>Oops!</strong> {{ session('selisih') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="alert alert-success mb-2">
+                        <strong>Sukses!</strong> {{ session('berhasil') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                     <div class="table-responsive">
                         <table class="table table-bordered m-0">
                             <thead>
@@ -126,46 +109,35 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if ($jurnal != '')
-                                    @foreach ($jurnal as $j)
-                                    <tr class="text-center">
-                                        <td>{{ $j['tanggal'] }}</td>
-                                        <td>{{ $j['mutasi'] }}</td>
-                                        <td>{{ $j['akunId'] }}</td>
-                                        <td>{{ $j['subAkunId'] }}</td>
-                                        <td>Rp. {{ number_format($j['nominal']) }}</td>
-                                        <td>{{ $j['keterangan'] }}</td>
-                                    </tr>
-                                    @endforeach
-                                @else
-                                    <tr class="text-center bd-secondary text-muted">
-                                        <td colspan="6">Belum ada input.</td>
-                                    </tr>
-                                @endif
+                                <tr class="text-center">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Rp. </td>
+                                    <td></td>
+                                </tr>
+                                <tr class="text-center bd-secondary text-muted">
+                                    <td colspan="6">Belum ada input.</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                     <table class="table table-bordered">
                         <tr>
-                            <th>Debit: Rp. {{number_format($totalDebit)}}</th>
-                            <th>Kredit: Rp. {{number_format($totalKredit)}}</th>
-                            <th>Selisih: Rp. {{number_format($totalDebit - $totalKredit)}}</th>
+                            <th>Debit: Rp. -</th>
+                            <th>Kredit: Rp. -</th>
+                            <th>Selisih: Rp. -</th>
                         </tr>
                     </table>
                     <br>
-
                     <div class="row">
                         <div class="col-lg-2 col-md-6 col-sm-12 col-12">
-                            <button type="submit" wire:click="simpanDB" class="btn btn-success float-left" {{$jurnal != '' ? '' : 'disabled'}}>Simpan</button>&nbsp;
-                            @if ($tombol == false)
-
-                            @else
-                                <button class="btn btn-danger" wire:click="clear">Reset</button>
-                            @endif
+                            <button type="submit" wire:click="simpanDB" class="btn btn-success float-left">Simpan</button>&nbsp;
+                            <button class="btn btn-danger" wire:click="clear">Reset</button>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

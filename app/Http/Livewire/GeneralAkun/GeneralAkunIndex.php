@@ -6,8 +6,7 @@ use Livewire\Component;
 use App\Models\GeneralAkun;
 use Livewire\WithPagination;
 
-class GeneralAkunIndex extends Component
-{
+class GeneralAkunIndex extends Component {
     // pagination
     use WithPagination;
 

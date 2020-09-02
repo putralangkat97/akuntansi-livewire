@@ -6,8 +6,7 @@ use App\Models\Akun;
 use Livewire\Component;
 use App\Models\GeneralAkun;
 
-class GeneralAkunCreate extends Component
-{
+class GeneralAkunCreate extends Component {
     // public variabel
     public $akun_id, $general_akun, $newNumber;
 
@@ -80,11 +79,13 @@ class GeneralAkunCreate extends Component
         $this->kosongkan();
     }
 
+    // method untuk mengosongkan form
     public function kosongkan() {
         $this->general_akun = null;
         $this->akun_id      = null;
     }
 
+    // method untuk merender dan mengirimkan data ke view
     public function render() {
         return view('livewire.general-akun.general-akun-create', [
             'akuns' => Akun::orderBy('no_akun', 'asc')->get()

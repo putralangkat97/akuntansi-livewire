@@ -11,4 +11,8 @@ class Akun extends Model
     public function generalAkuns() {
         return $this->hasMany('App\Models\GeneralAkun', 'akun_id');
     }
+
+    public function subGeneralAkuns() {
+        return $this->hasMany('App\Models\SubGeneralAkun');
+    }
 }

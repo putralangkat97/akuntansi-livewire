@@ -7,8 +7,8 @@ use Livewire\Component;
 use App\Models\JurnalUmum;
 use Illuminate\Http\Request;
 
-class JurnalIndex extends Component
-{// Semua variabel yang bisa diakses di blade maupun controller
+class JurnalIndex extends Component {
+    // Semua variabel yang bisa diakses di blade maupun controller
     public $tanggal, $mutasi, $keterangan, $akunId, $subAkunId, $nominal, $jurnal, $totalDebit, $totalKredit, $subAkunss;
     public $tombol = false;
 
@@ -128,11 +128,7 @@ class JurnalIndex extends Component
         $this->totalKredit = null;
     }
 
-    public function render()
-    {
-        return view('livewire.jurnal-umum.jurnal-index', [
-            'akuns' => Akun::whereHas('subAkuns')->orderBy('nama_akun', 'desc')->get(),
-            'subakuns' => $this->subAkunss
-        ]);
+    public function render() {
+        return view('livewire.jurnal-umum.jurnal-index');
     }
 }
