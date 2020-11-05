@@ -18,7 +18,6 @@ class CreateSubGeneralAkunsTable extends Migration
             $table->string('no_sub_ga', 15);
             $table->string('nama_sub_general_akun', 50);
             $table->unsignedBigInteger('general_akun_id');
-            $table->unsignedBigInteger('akun_id');
             $table->timestamps();
 
             $table->foreign('general_akun_id')->references('id')->on('general_akun')->onDelete('cascade');

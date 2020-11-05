@@ -10,7 +10,7 @@ class GeneralAkunIndex extends Component {
     // pagination
     use WithPagination;
 
-    // Untuk update quert search, nama array disesuaikan dengan nama model
+    // Untuk update query search, nama array disesuaikan dengan nama model
     protected $updatesQueryString = ['search'];
 
     // public variable
@@ -21,7 +21,8 @@ class GeneralAkunIndex extends Component {
         'tambah'    => 'tambahGeneralAkun',
         'hapus'     => 'hapusGeneralAkun'
     ];
-
+    
+    // method untuk toastr Apabila akun berhasil ditambahkan
     public function tambahGeneralAkun($generalAkun) {
         $this->emit(
             'alert', ['type' => 'success', 'message' => '👍 General Akun '. $generalAkun['nama_general_akun'] .' berhasil ditambahkan']
@@ -40,7 +41,6 @@ class GeneralAkunIndex extends Component {
             $generalAkun = GeneralAkun::find($id);
             $generalAkun->delete();
             $this->emit('hapus');
-            $this->yakin = false;
         }
     }
 
@@ -65,8 +65,8 @@ class GeneralAkunIndex extends Component {
         });
 
         // result hasil pencarian
-        $results    = $model->latest('id')
-                        ->paginate(5);
+        $results = $model->latest('id')
+            ->paginate(5);
         
         return view('livewire.general-akun.general-akun-index', [
             'generalAkuns' => $results

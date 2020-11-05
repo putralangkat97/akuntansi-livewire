@@ -12,7 +12,7 @@
                 <select wire:model="general_akun_id" class="form-control">
                     <option value="">Pilih</option>
                     @foreach ($generalAkuns as $akun)
-                        <option value="{{ $akun->akun_id }}">{{ $akun->no_ga }} - {{ $akun->nama_general_akun }}</option>
+                        <option value="{{ $akun->id }}">{{ $akun->no_ga }} - {{ $akun->nama_general_akun }}</option>
                     @endforeach
                 </select>
                 @error('general_akun_id') <span class="error text-danger">{{ $message }}</span> @enderror

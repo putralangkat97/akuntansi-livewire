@@ -11,6 +11,7 @@ class SubGeneralAkunCreate extends Component {
     // public variabel
     public $nama_sub_general_akun, $general_akun_id, $newNumber;
 
+    // method tambah sub general akun
     public function tambahSubGeneral() {
         // validasi terlebih dahulu boss
         $this->validate([
@@ -26,19 +27,55 @@ class SubGeneralAkunCreate extends Component {
         $lastIncrement              = '';
 
         // tangkap data general akun
-        $general_akun = $this->general_akun_id;
-
-        // menjalankan sintaks berdasarkan id general akun yang dipilih
-        if ($general_akun == 1) {
+        $general_akun   = $this->general_akun_id;
+        
+        // men-generate auto number berdasarkan id akun yang dipilih
+        if ($akun_id == 1) {
+            $lastGeneralAkun            = GeneralAkun::where('akun_id', $general_akun)->get()->map->only('id', 'no_ga')->first();
             $lastNumberSubGeneralAkun   = SubGeneralAkun::with([
-                'generalAkun' => function ($q) {
-                    $q->where('akun_id', 1)->first();
+                'generalAkun' => function ($query) {
+                    $query->where('akun_id', 1)->first();
                 }
-            ])->orderBy('id', 'desc')->first()->no_sub_ga ?? 0;
+            ])->where('general_akun_id', $lastGeneralAkun['id'])->orderBy('id', 'desc')->first()->no_sub_ga ?? 0;
             $lastIncrement              = substr($lastNumberSubGeneralAkun, -1);
-            $this->newNumber            = '101'.str_pad($lastIncrement + 1, 2, 0, STR_PAD_LEFT);
+            $this->newNumber            = $neww.str_pad($lastIncrement + 1, 2, 0, STR_PAD_LEFT);
+        } else if ($akun_id == 2) {
+            $lastGeneralAkun            = GeneralAkun::where('akun_id', $general_akun)->get()->map->only('id', 'no_ga')->first();
+            $lastNumberSubGeneralAkun   = SubGeneralAkun::with([
+                'generalAkun' => function ($query) {
+                    $query->where('akun_id', 2)->first();
+                }
+            ])->where('general_akun_id', $lastGeneralAkun['id'])->orderBy('id', 'desc')->first()->no_sub_ga ?? 0;
+            $lastIncrement              = substr($lastNumberSubGeneralAkun, -1);
+            $this->newNumber            = $neww.str_pad($lastIncrement + 1, 2, 0, STR_PAD_LEFT);
+        } else if ($akun_id == 3) {
+            $lastGeneralAkun            = GeneralAkun::where('akun_id', $general_akun)->get()->map->only('id', 'no_ga')->first();
+            $lastNumberSubGeneralAkun   = SubGeneralAkun::with([
+                'generalAkun' => function ($query) {
+                    $query->where('akun_id', 3)->first();
+                }
+            ])->where('general_akun_id', $lastGeneralAkun['id'])->orderBy('id', 'desc')->first()->no_sub_ga ?? 0;
+            $lastIncrement              = substr($lastNumberSubGeneralAkun, -1);
+            $this->newNumber            = $neww.str_pad($lastIncrement + 1, 2, 0, STR_PAD_LEFT);
+        } else if ($akun_id == 4) {
+            $lastGeneralAkun            = GeneralAkun::where('akun_id', $general_akun)->get()->map->only('id', 'no_ga')->first();
+            $lastNumberSubGeneralAkun   = SubGeneralAkun::with([
+                'generalAkun' => function ($query) {
+                    $query->where('akun_id', 4)->first();
+                }
+            ])->where('general_akun_id', $lastGeneralAkun['id'])->orderBy('id', 'desc')->first()->no_sub_ga ?? 0;
+            $lastIncrement              = substr($lastNumberSubGeneralAkun, -1);
+            $this->newNumber            = $neww.str_pad($lastIncrement + 1, 2, 0, STR_PAD_LEFT);
+        } else if ($akun_id == 5) {
+            $lastGeneralAkun            = GeneralAkun::where('akun_id', $general_akun)->get()->map->only('id', 'no_ga')->first();
+            $lastNumberSubGeneralAkun   = SubGeneralAkun::with([
+                'generalAkun' => function ($query) {
+                    $query->where('akun_id', 5)->first();
+                }
+            ])->where('general_akun_id', $lastGeneralAkun['id'])->orderBy('id', 'desc')->first()->no_sub_ga ?? 0;
+            $lastIncrement              = substr($lastNumberSubGeneralAkun, -1);
+            $this->newNumber            = $neww.str_pad($lastIncrement + 1, 2, 0, STR_PAD_LEFT);
         }
-        dd($this->newNumber);
 
         // tangkap dan bungkus data kedalam variabel form
         $form = [
@@ -47,6 +84,7 @@ class SubGeneralAkunCreate extends Component {
             'no_sub_ga'             => $this->newNumber
         ];
         
+        dd($form);
         // masukkan data kedalam database
         // $subGeneralAkun = SubGeneralAkun::create($form);
 

@@ -1,4 +1,4 @@
-<div>
+(<div>
     {{-- section title --}}
     @section('title', 'Sub General Akun')
     @section('page-title', 'Sub General Akun')
@@ -44,7 +44,7 @@
                                             <td>{{ $subAkun->nama_sub_general_akun }}</td>
                                             <td>{{ $subAkun->generalAkun->nama_general_akun }}</td>
                                             <td>
-                                                <button class="btn btn-sm btn-danger text-white">hapus</button>
+                                                <button class="btn btn-sm btn-danger text-white" wire:click="hapus({{ $subAkun->id }})">hapus</button>
                                             </td>
                                         </tr>
                                     @empty
@@ -54,6 +54,7 @@
                                     @endforelse
                                 </tbody>
                             </table>
+                            {{ $subGeneralAkuns->links() }}
                         </div>
                     </div>
                 </div>

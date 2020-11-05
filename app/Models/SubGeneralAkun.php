@@ -12,8 +12,4 @@ class SubGeneralAkun extends Model
     public function generalAkun() {
         return $this->belongsTo('App\Models\GeneralAkun');
     }
-
-    public function akun() {
-        return $this->belongsTo('App\Models\Akun');
-    }
 }

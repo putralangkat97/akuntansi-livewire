@@ -42,29 +42,6 @@
                                     @error('mutasi') <span class="error text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
-                            <div class="col-lg-8 col-md-6 col-sm-12 col-12">
-                                <div class="form-group">
-                                    <label>Keterangan:</label>
-                                    <input type="text" class="form-control" placeholder="keterangan" wire:model="keterangan">
-                                    @error('keterangan') <span class="error text-danger">{{ $message }}</span> @enderror
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-12 col-12">
-                                <div class="form-group">
-                                    <label>Nominal:</label>
-                                    <input type="number" class="form-control" placeholder="0000" wire:model="nominal">
-                                    @error('nominal') <span class="error text-danger">{{ $message }}</span> @enderror
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-12 col-12">
-                                <div class="form-group">
-                                    <label>Akun:</label>
-                                    <select class="form-control" wire:model="akunId">
-                                        <option value="">-- Pilih Akun --</option>
-                                    </select>
-                                    @error('akun_parent') <span class="error text-danger">{{ $message }}</span> @enderror
-                                </div>
-                            </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                                 <div class="form-group">
                                     <label>Sub Akun: <small class="text-danger">(harap pilih akun terlebih dahulu)</small></label>
@@ -74,9 +51,23 @@
                                     @error('subAkunId') <span class="error text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                                <div class="form-group">
+                                    <label>Nominal:</label>
+                                    <input type="number" class="form-control" placeholder="0000" wire:model="nominal">
+                                    @error('nominal') <span class="error text-danger">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="form-group">
+                                    <label>Keterangan:</label>
+                                    <input type="text" class="form-control" placeholder="keterangan" wire:model="keterangan">
+                                    @error('keterangan') <span class="error text-danger">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-2 col-md-6 col-sm-12 col-12">
+                            <div class="col-lg-2 col-md-12 col-sm-12 col-12">
                                 <button type="submit" class="btn btn-md btn-primary btn-block">Tambah</button>
                             </div>
                         </div>
@@ -86,12 +77,6 @@
                 <div class="card-body">
                     <div class="alert alert-warning mb-2">
                         <strong>Oops!</strong> {{ session('selisih') }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="alert alert-success mb-2">
-                        <strong>Sukses!</strong> {{ session('berhasil') }}
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
